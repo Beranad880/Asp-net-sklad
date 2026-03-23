@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Product.Category">Kategorie</label>
-                <div style="display: flex; gap: 0.5rem;">
+                <div class="select-with-action">
                     <select asp-for="Product.Category" asp-items="Model.Categories" required>
                         <option value="">-- Vyberte kategorii --</option>
                     </select>
@@ -40,9 +40,9 @@
                 <textarea asp-for="Product.Description" rows="4" placeholder="Krátký popis položky..."></textarea>
             </div>
 
-            <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
-                <button type="submit" class="btn-primary" style="flex: 1;">Uložit položku</button>
-                <a asp-page="Index" class="btn-danger" style="flex: 1; text-align: center;">Zrušit</a>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Uložit položku</button>
+                <a asp-page="Index" class="btn-danger">Zrušit</a>
             </div>
         </form>
     </div>

@@ -121,7 +121,7 @@ nav a.active {
 /* ─── Main Content ─── */
 main {
     flex: 1 0 auto;
-    padding: 7rem 0 10rem;
+    padding: 2.5rem 0 5rem;
 }
 
 h1 {
@@ -311,6 +311,58 @@ h2 {
     padding: 0.5rem 1rem;
     font-size: 0.82rem;
     text-align: center;
+}
+
+/* ─── Form actions row ─── */
+.form-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.form-actions .btn-primary,
+.form-actions .btn-danger {
+    flex: 1;
+    text-align: center;
+}
+
+/* ─── Select with inline action button ─── */
+.select-with-action {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.select-with-action select {
+    flex: 1;
+}
+
+/* ─── Delete confirmation detail ─── */
+.delete-detail {
+    margin-bottom: 2.5rem;
+    text-align: left;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--border);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--bg);
+}
+
+.delete-detail-label {
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+}
+
+.delete-detail-value {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.delete-detail-value:last-child {
+    margin-bottom: 0;
 }
 
 /* ─── Forms ─── */

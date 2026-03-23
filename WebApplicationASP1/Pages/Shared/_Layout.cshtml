@@ -10,12 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    @{
+        var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? "";
+    }
     <header>
         <nav class="container">
             <a class="logo" asp-page="/Products/Index">ProductManager</a>
             <ul>
-                <li><a asp-page="/Products/Index">Položky</a></li>
-                <li><a asp-page="/Categories/Index">Kategorie</a></li>
+                <li><a asp-page="/Products/Index" class="@(currentPage.StartsWith("/Products") ? "active" : "")">Položky</a></li>
+                <li><a asp-page="/Categories/Index" class="@(currentPage.StartsWith("/Categories") ? "active" : "")">Kategorie</a></li>
             </ul>
         </nav>
     </header>

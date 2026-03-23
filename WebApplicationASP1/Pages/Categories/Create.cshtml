@@ -4,26 +4,28 @@
     ViewData["Title"] = "Nová kategorie";
 }
 
-<div class="title-row">
+<a asp-page="Index" class="back-link">Zpět na seznam</a>
+
+<div class="page-header">
     <h1>Vytvořit kategorii</h1>
-    <a asp-page="Index">Zpět na seznam</a>
+    <p>Vyplňte níže uvedené informace o nové kategorii.</p>
 </div>
 
 <div class="centered-container">
-    <div class="card">
+    <div class="form-card">
         <form method="post">
             <div class="form-group">
                 <label asp-for="Category.Name">Název</label>
-                <input asp-for="Category.Name" required />
+                <input asp-for="Category.Name" placeholder="Název kategorie" required />
             </div>
             <div class="form-group">
                 <label asp-for="Category.Description">Popis</label>
-                <textarea asp-for="Category.Description" rows="4"></textarea>
+                <textarea asp-for="Category.Description" rows="4" placeholder="Krátký popis kategorie..."></textarea>
             </div>
-            
-            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                <button type="submit" class="btn-primary" style="flex: 1;">Uložit kategorii</button>
-                <a asp-page="Index" class="btn-danger" style="flex: 1; text-align: center;">Zrušit</a>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Uložit kategorii</button>
+                <a asp-page="Index" class="btn-danger">Zrušit</a>
             </div>
         </form>
     </div>
