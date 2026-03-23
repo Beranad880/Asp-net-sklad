@@ -32,12 +32,16 @@ body {
     color: var(--text);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container {
     max-width: 1120px;
     margin: 0 auto;
     padding: 0 2rem;
+    width: 100%;
 }
 
 /* ─── Header & Navigation ─── */
@@ -49,6 +53,7 @@ header {
     top: 0;
     z-index: 100;
     box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
 }
 
 header .container {
@@ -115,7 +120,8 @@ nav a.active {
 
 /* ─── Main Content ─── */
 main {
-    padding: 3.5rem 0 6rem;
+    flex: 1 0 auto;
+    padding: 7rem 0 10rem;
 }
 
 h1 {
@@ -135,7 +141,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
 }
 
 /* ─── Buttons ─── */
@@ -194,7 +200,7 @@ h2 {
 
 /* ─── Search ─── */
 .search-container {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
     display: flex;
     gap: 0.75rem;
 }
@@ -408,11 +414,12 @@ textarea {
 /* ─── Footer ─── */
 footer {
     border-top: 1px solid var(--border);
-    padding: 2rem 0;
+    padding: 3rem 0;
     color: var(--text-muted);
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     text-align: center;
     background: var(--surface);
+    flex-shrink: 0;
 }
 
 /* ─── Responsive ─── */
