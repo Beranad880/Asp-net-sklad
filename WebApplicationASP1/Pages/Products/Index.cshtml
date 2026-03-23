@@ -22,6 +22,7 @@
     <table class="products-table">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Název</th>
                 <th>Kategorie</th>
                 <th>Cena</th>
@@ -33,18 +34,26 @@
             @foreach (var item in Model.Products)
             {
                 <tr>
-                    <td>
+                    <td class="id-cell" data-label="ID"><code>@item.Id</code></td>
+                    <td data-label="Název">
+                        <div class="product-sku">@item.Sku</div>
                         <div class="product-name">@item.Name</div>
                         <div class="product-description-short">@item.Description</div>
                     </td>
-                    <td><span class="category-badge">@item.Category</span></td>
-                    <td class="price-cell">@item.Price.ToString("N2") Kč</td>
-                    <td>
-                        <span class="stock-indicator @(item.Stock <= 0 ? "out" : "")">
+                    <td data-label="Kategorie"><span class="category-badge">@item.Category</span></td>
+                    <td class="price-cell" data-label="Cena">@item.Price.ToString("N2") Kč</td>
+                    <td data-label="Skladem">
+                        @{
+                            var stockStatusClass = "";
+                            var statusTitle = "";
+                            if (item.Stock <= 0) { stockStatusClass = "out"; statusTitle = "Vyprodáno"; }
+                            else if (item.Stock <= item.MinStock) { stockStatusClass = "low"; statusTitle = "Nízký stav zásob"; }
+                        }
+                        <span class="stock-indicator @stockStatusClass" title="@statusTitle">
                             @item.Stock ks
                         </span>
                     </td>
-                    <td>
+                    <td data-label="Akce">
                         <div class="table-actions">
                             <a asp-page="./Edit" asp-route-id="@item.Id" class="btn-icon" title="Upravit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>

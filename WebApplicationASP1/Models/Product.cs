@@ -21,6 +21,18 @@ public sealed class Product
     [BsonElement("category")]
     public string Category { get; set; } = string.Empty;
 
+    [BsonElement("sku")]
+    public string Sku { get; set; } = string.Empty;
+
+    [BsonElement("minStock")]
+    public int MinStock { get; set; }
+
+    [BsonElement("location")]
+    public string Location { get; set; } = string.Empty;
+
+    [BsonElement("supplier")]
+    public string Supplier { get; set; } = string.Empty;
+
     [BsonElement("stock")]
     public int Stock { get; set; }
 

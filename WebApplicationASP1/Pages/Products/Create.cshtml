@@ -18,9 +18,15 @@
                 <label asp-for="Product.Name">Název</label>
                 <input asp-for="Product.Name" placeholder="Název položky" required />
             </div>
-            <div class="form-group">
-                <label asp-for="Product.Price">Cena (Kč)</label>
-                <input asp-for="Product.Price" type="number" step="0.01" placeholder="0.00" required />
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label asp-for="Product.Sku">SKU (Kód položky)</label>
+                    <input asp-for="Product.Sku" placeholder="Např. PROD-001" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Product.Price">Cena (Kč)</label>
+                    <input asp-for="Product.Price" type="number" step="0.01" placeholder="0.00" required />
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="Product.Category">Kategorie</label>
@@ -32,13 +38,31 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Product.Stock">Skladem (ks)</label>
-                <input asp-for="Product.Stock" type="number" placeholder="0" required />
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label asp-for="Product.Stock">Skladem (ks)</label>
+                    <input asp-for="Product.Stock" type="number" placeholder="0" required />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Product.MinStock">Minimální stav (ks)</label>
+                    <input asp-for="Product.MinStock" type="number" placeholder="0" required />
+                </div>
             </div>
+
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label asp-for="Product.Location">Umístění (Regál/Sekce)</label>
+                    <input asp-for="Product.Location" placeholder="Např. A1-R2" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Product.Supplier">Dodavatel</label>
+                    <input asp-for="Product.Supplier" placeholder="Název dodavatele" />
+                </div>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Product.Description">Popis</label>
-                <textarea asp-for="Product.Description" rows="4" placeholder="Krátký popis položky..."></textarea>
+                <textarea asp-for="Product.Description" rows="3" placeholder="Krátký popis položky..."></textarea>
             </div>
 
             <div class="form-actions">

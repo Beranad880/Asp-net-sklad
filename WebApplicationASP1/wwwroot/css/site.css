@@ -277,6 +277,25 @@ h2 {
         background-color: #fafafa;
     }
 
+.id-cell code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    background: var(--bg);
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+.product-sku {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+    text-transform: uppercase;
+}
+
 .product-name {
     font-weight: 600;
     color: var(--text);
@@ -331,6 +350,14 @@ h2 {
 
         .stock-indicator.out::before {
             background: var(--danger);
+        }
+
+    .stock-indicator.low {
+        color: #f59e0b; /* Amber/Orange */
+    }
+
+        .stock-indicator.low::before {
+            background: #f59e0b;
         }
 
 .table-actions {
