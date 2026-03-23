@@ -1,95 +1,85 @@
-# WebApplicationASP1 — Product Catalog API
+# ProductManager — Moderní Skladový Systém
 
-ASP.NET Core Web API (.NET 10) with MongoDB for managing an e-commerce product catalog.
+Kompletní webová aplikace pro správu skladu a katalogu produktů postavená na **ASP.NET Core (Razor Pages)** a **MongoDB**. Systém nabízí přehledné uživatelské rozhraní pro evidenci zboží, sledování stavu zásob a správu kategorií.
 
-## Project structure
+## 🚀 Hlavní Funkce
 
-```
-WebApplicationASP1/
-├── Controllers/
-│   └── ProductsController.cs
-├── Models/
-│   └── Product.cs
-├── Services/
-│   └── ProductService.cs
-├── Settings/
-│   └── MongoDbSettings.cs
-├── appsettings.json
-├── Program.cs
-└── README.md
-```
+-   **Správa Produktů (CRUD):** Kompletní evidence zboží včetně názvů, popisů a cen.
+-   **Pokročilá Skladová Evidence:**
+    -   **SKU (Kód položky):** Unikátní identifikátory pro interní potřeby.
+    -   **Sledování Zásob:** Vizuální indikátory pro dostatečný stav, nízký stav (varování) a vyprodáno.
+    -   **Minimální Stav:** Nastavení limitu pro automatické upozornění na docházející zboží.
+    -   **Lokace:** Evidence umístění ve skladu (např. regál, sekce).
+    -   **Dodavatelé:** Přehled o původu zboží.
+-   **Správa Kategorií:**
+    -   Rychlé přidávání kategorií přímo ve formuláři produktu.
+    -   Samostatná stránka pro výpis a mazání nepotřebných kategorií.
+-   **Moderní UI:**
+    -   Plně responzivní design (vhodné pro mobilní telefony i tablety).
+    -   Interaktivní prvky (rozbalování ID na hover, hover efekty v tabulce).
+    -   Full-text vyhledávání v názvech a popisech.
+-   **API Rozhraní:** Podpora REST API pro integraci s externími systémy.
 
-## Prerequisites
+## 🛠️ Technologie
 
-- [.NET 10 SDK](https://dotnet.microsoft.com/download)
-- [MongoDB](https://www.mongodb.com/try/download/community) running on `localhost:27017`
+-   **Backend:** ASP.NET Core 10.0 (Razor Pages & Web API)
+-   **Databáze:** MongoDB (dokumentově orientovaná databáze)
+-   **Frontend:** HTML5, Vanilla CSS3 (moderní UI bez těžkých frameworků), JavaScript (ES6+)
+-   **Konfigurace:** Podpora `.env` souborů pro citlivé údaje a `appsettings.json`.
+-   **Deployment:** Připravený `Dockerfile` pro kontejnerizaci.
 
-## Getting started
+## 📋 Požadavky
 
-```bash
-# Restore packages
-dotnet restore
+-   [.NET 10 SDK](https://dotnet.microsoft.com/download)
+-   [MongoDB](https://www.mongodb.com/try/download/community) (lokální nebo Atlas cluster)
 
-# Run the application
-dotnet run
-```
+## 🏗️ Instalace a Spuštění
 
-The API will start at `https://localhost:{port}`.
-OpenAPI schema is available at `/openapi/v1.json` (Development only).
+1.  **Klonování repozitáře:**
+    ```bash
+    git clone <url-repozitare>
+    cd WebApplicationASP1
+    ```
 
-## Configuration
+2.  **Konfigurace:**
+    Vytvořte v kořenu soubor `.env` nebo upravte `appsettings.json`:
+    ```env
+    MONGO_CONNECTION_STRING=mongodb://localhost:27017
+    ```
 
-MongoDB connection is configured in `appsettings.json`:
+3.  **Spuštění:**
+    ```bash
+    dotnet restore
+    dotnet run --project WebApplicationASP1
+    ```
 
-```json
-"MongoDbSettings": {
-  "ConnectionString": "mongodb://localhost:27017",
-  "DatabaseName": "ProductCatalog",
-  "ProductsCollectionName": "Products"
-}
-```
+Aplikace bude dostupná na: `https://localhost:7146` (nebo dle nastavení v `launchSettings.json`).
 
-For production, override `ConnectionString` via an environment variable or user secrets:
+## 📁 Struktura Projektu
 
-```bash
-dotnet user-secrets set "MongoDbSettings:ConnectionString" "mongodb+srv://user:pass@cluster.mongodb.net"
-```
+-   `/Pages`: Razor Pages pro uživatelské rozhraní (Produkty, Kategorie).
+-   `/Controllers`: API endpointy pro externí přístup.
+-   `/Services`: Business logika a komunikace s MongoDB.
+-   `/Models`: Definice datových struktur (Product, Category).
+-   `/wwwroot`: Statické soubory (CSS, JS).
 
-## API endpoints
-
-| Method   | Route                  | Description          |
-|----------|------------------------|----------------------|
-| `GET`    | `/api/products`        | List all products    |
-| `GET`    | `/api/products/{id}`   | Get product by ID    |
-| `POST`   | `/api/products`        | Create a product     |
-| `PUT`    | `/api/products/{id}`   | Replace a product    |
-| `DELETE` | `/api/products/{id}`   | Delete a product     |
-
-## Example request
-
-```http
-POST /api/products
-Content-Type: application/json
-
-{
-  "name": "Gaming Mouse",
-  "description": "RGB gaming mouse",
-  "price": 49.99,
-  "category": "Electronics",
-  "stock": 120
-}
-```
-
-## Product document
+## 📊 Datový Model (Product)
 
 ```json
 {
-  "_id": "ObjectId",
-  "name": "Gaming Mouse",
-  "description": "RGB gaming mouse",
-  "price": 49.99,
-  "category": "Electronics",
-  "stock": 120,
-  "createdAt": "2026-03-10T00:00:00Z"
+  "_id": "69c15c34073a652dbdfd35e4",
+  "sku": "NB-DELL-5440",
+  "name": "Dell Latitude 5440",
+  "description": "Firemní notebook 14\", Intel i5...",
+  "price": 28990.00,
+  "category": "Elektronika",
+  "stock": 12,
+  "minStock": 5,
+  "location": "Regál A1-R2",
+  "supplier": "Dell CZ",
+  "createdAt": "2026-03-23T16:00:00Z"
 }
 ```
+
+---
+Vyvinuto jako moderní řešení pro efektivní správu skladu.
